@@ -1,16 +1,16 @@
   @import "./utils/typography";
   @import "./utils/mixins";
   @import "./utils/variables";
+  @import "./utils/responsive-data";
 
 .body {
-  @extend %body-text;
   background-color: $c-white;
   color: $c-black;
   overflow-x: hidden;
   opacity: 1;
   ::selection {
-    color: #5f00f9;
-    background: #6929ff1b;
+    color: $c-white;
+    background: $red-100;
     mix-blend-mode: difference;
   }
 }
@@ -21,6 +21,7 @@
   scrollbar-width: none; /* Firefox 64+ */
   -ms-overflow-style: none; /* Internet Explorer 10+ */
   overflow: -moz-scrollbars-none;
+  scroll-behavior: smooth;
 
   &::-webkit-scrollbar {
     display: none;
@@ -45,8 +46,17 @@
 // #endregion Scrollbar
 
 .container {
-  padding-right: 4vw;
-  padding-left: 4vw;
+  padding-right: VW(30);
+  padding-left: VW(30);
+
+  @include forTablet {
+    padding-right: VW(20, $tablet);
+    padding-left: VW(20, $tablet);
+  }
+  @include forMobile {
+    padding-right: VW(10, $mobile);
+    padding-left: VW(10, $mobile);
+  }
 }
 
 .shadow {

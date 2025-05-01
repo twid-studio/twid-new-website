@@ -1,0 +1,182 @@
+.contacts {
+  margin-top: VW(200);
+  background-color: $g-20;
+  padding: VW(90) 0 VW(60);
+
+  @include forMobile {
+    padding: VW(20, $mobile) 0;
+  }
+
+  .info {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: VW(10);
+
+    @include forTablet {
+      align-items: flex-start;
+      gap: VW(20, $tablet);
+      margin-left: VW(20, $tablet);
+      padding: VW(20, $tablet) 0;
+    }
+
+    @include forMobile {
+      gap: VW(10, $mobile);
+      padding: VW(20, $mobile) 0;
+      align-items: flex-start;
+      margin-left: VW(10, $mobile);
+    }
+
+    &__link {
+      transition: color 0.3s ease;
+
+      @include hover {
+        color: $red-100;
+      }
+    }
+
+    .button {
+      margin-top: VW(20);
+
+      @include forMobile {
+        margin-top: VW(10, $mobile);
+      }
+
+      &__icon {
+        border: none;
+        padding: 0;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  .email-button {
+    &__wrapper {
+      width: 100%;
+      text-align: center;
+      position: relative;
+      cursor: pointer;
+
+      @include hover {
+        color: $red-100;
+      }
+
+      @include forTablet {
+        text-align: left;
+      }
+
+      @include forMobile {
+        text-align: left;
+      }
+    }
+
+    &__link {
+      @extend .super-text;
+      font-size: VW(155);
+      margin-top: VW(10);
+      padding: VW(15) 0 0;
+
+      transition: color 0.3s ease;
+
+      @include forMobile {
+        padding: VW(12, $mobile) 0 VW(9, $mobile);
+      }
+    }
+
+    &__copy-notification {
+      @extend .super-text;
+      font-size: VW(155);
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: $red-100;
+      color: $c-white !important;
+      padding: VW(15) 0 0;
+      line-height: 1;
+      opacity: 0;
+      filter: blur(0.3vw);
+
+      transition: opacity 0.3s ease, filter 0.3s ease;
+
+      @include forMobile {
+        transform: translateX(VW(-10, $mobile));
+        width: 100vw;
+        text-align: center;
+        padding: VW(12, $mobile) 0 VW(9, $mobile);
+      }
+
+      &--active {
+        filter: blur(0vw);
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.contacts-link {
+  position: fixed;
+  bottom: VW(20);
+  right: VW(20);
+  z-index: 900;
+  background-color: $g-40;
+  border-radius: VW(10);
+  border: VW(1) solid $g-40;
+  padding: VW(10) VW(18) VW(10) VW(14);
+  display: flex;
+  flex-direction: column;
+  gap: VW(15);
+
+  cursor: pointer;
+  filter: blur(0vw);
+  transition: filter 0.3s ease, background-color 0.3s ease,
+    border-color 0.3s ease, opacity 0.3s ease,;
+
+  @include hover {
+    background-color: #fff;
+    filter: invert(1);
+  }
+
+  @include forTablet {
+    bottom: VW(20, $tablet);
+    right: VW(20, $tablet);
+    padding: VW(10, $tablet);
+    border-radius: VW(10, $tablet);
+    gap: VW(13, $tablet);
+  }
+
+  @include forMobile {
+    bottom: VW(10, $mobile);
+    right: VW(10, $mobile);
+    padding: VW(9, $mobile) VW(15, $mobile) VW(10, $mobile) VW(12, $mobile);
+    border-radius: VW(10, $mobile);
+    gap: VW(8, $mobile);
+    scale: 0.8;
+    transform-origin: right bottom;
+  }
+
+  &--hidden {
+    opacity: 0;
+    pointer-events: none;
+    filter: blur(0.3vw);
+  }
+
+  &__icon {
+    width: VW(25);
+    height: VW(34);
+
+    @include forTablet {
+      width: VW(18, $tablet);
+      height: VW(25, $tablet);
+    }
+
+    @include forMobile {
+      width: VW(18, $mobile);
+      height: VW(25, $mobile);
+    }
+  }
+}

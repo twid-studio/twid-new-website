@@ -1,0 +1,43 @@
+.military-page {
+  .categories {
+    margin-top: VW(30);
+
+    &__title {
+      @include forDesktop {
+        width: 45%;
+      }
+    }
+
+    &__list {
+      @include forDesktop {
+        width: 80%;
+      }
+
+      display: flex;
+      flex-wrap: wrap;
+      gap: VW(10);
+      margin-top: VW(50);
+
+      @include forTablet {
+        gap: VW(20, $tablet);
+      }
+      @include forMobile {
+        gap: VW(5, $mobile);
+      }
+    }
+  }
+}
+
+.category {
+  padding: VW(18);
+  border-radius: VW(5);
+  background: $g-20;
+
+  @include forTablet {
+    padding: VW(20, $tablet);
+  }
+  @include forMobile {
+    padding: VW(10, $mobile);
+    border-radius: VW(3, $mobile);
+  }
+}

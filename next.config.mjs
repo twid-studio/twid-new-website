@@ -9,6 +9,12 @@ const nextConfig = {
         port: '',
         // pathname: '/account123/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'app.twid.marketing',
+        port: '',
+        // pathname: '/account123/**',
+      },
     ],
   },
   sassOptions: {

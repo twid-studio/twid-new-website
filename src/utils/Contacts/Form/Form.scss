@@ -1,0 +1,331 @@
+.form {
+  margin: VW(40) auto 0;
+  width: VW(650);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include forTablet {
+    align-items: flex-start;
+    width: auto;
+    margin: VW(60, $tablet) VW(20, $tablet) 0;
+  }
+  
+  @include forMobile {
+    align-items: flex-start;
+    width: auto;
+    margin: VW(120, $tablet) VW(20, $tablet) 0;
+    gap: VW(10, $mobile);
+  }
+
+  .input {
+    width: 100%;
+    padding: VW(10) 0;
+    border: none;
+    border-radius: 0vw;
+    background-color: transparent;
+    position: relative;
+    z-index: 2;
+    color: inherit;
+    @extend %body-text;
+
+    @include forTablet {
+      padding: VW(20, $tablet) 0;
+    }
+
+    @include forMobile {
+      padding: VW(10, $mobile) 0;
+      font-size: VW(16, $mobile);
+    }
+
+    &:focus {
+      opacity: 100%;
+      outline: none;
+    }
+
+    &:-webkit-autofill {
+      opacity: 100%;
+      outline: none;
+    }
+
+    &-error-msg {
+      // font: 1em sans-serif;
+      padding-top: VW(5);
+      color: red;
+      position: absolute;
+    }
+
+    &-wrapper {
+      width: 100%;
+      display: block;
+      position: relative;
+      padding: VW(20) 0 VW(30);
+
+      transition: color 0.3s ease;
+      color: $c-black;
+      cursor: pointer;
+
+      @include hover {
+        color: $c-white;
+
+        .input {
+          &-text-wrapper {
+            border-color: $c-white;
+            opacity: 0.9999;
+          }
+
+          &-bg {
+            opacity: 1;
+          }
+        }
+      }
+
+      &--active {
+        color: $c-white;
+
+        .input {
+          &-text-wrapper {
+            border-color: $c-white;
+            opacity: 0.9999;
+          }
+
+          &-bg {
+            opacity: 1;
+          }
+        }
+      }
+
+      ::selection {
+        background: red;
+        mix-blend-mode: difference;
+      }
+    }
+
+    &-placeholder {
+      text-wrap: nowrap;
+      color: inherit;
+      z-index: 2;
+
+      @include forMobile {
+        font-size: VW(16, $mobile);
+      }
+    }
+
+    &-text-wrapper {
+      transition: border-color 0.3s ease;
+      border-bottom: VW(1) solid;
+      border-color: $c-black;
+
+      display: flex;
+      align-items: center;
+      gap: 0.7em;
+
+      &--error {
+        border-color: $red-100;
+      }
+
+      &-textarea {
+        align-items: flex-start;
+
+        .input-placeholder {
+          margin-top: 0.51vw;
+
+          @include forTablet {
+            margin-top: VW(20, $tablet);
+          }
+
+          @include forMobile {
+            margin-top: VW(6, $mobile);
+          }
+        }
+      }
+    }
+
+    &-bg {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      right: 0;
+      bottom: 0;
+      z-index: 0;
+      background-color: $c-black;
+      width: 100vw;
+      transform: translateX(-50%);
+      opacity: 0;
+
+      transition: opacity 0.3s ease;
+    }
+
+    &.textarea {
+      max-width: VW(480);
+      min-width: VW(480);
+      min-height: 1.4em;
+      max-height: 6em;
+      padding-right: VW(20);
+
+      @extend %body-text;
+
+      @include forMobile {
+        font-size: VW(16, $mobile);
+        min-width: VW(270, $mobile);
+        max-width: VW(270, $mobile);
+        padding-top: VW(5, $mobile);
+      }
+    }
+  }
+
+  &__btn {
+    margin-top: VW(30);
+
+    @include forTablet {
+      margin-top: VW(60, $tablet);
+    }
+
+    @include forMobile {
+      margin-top: VW(55, $mobile);
+    }  
+
+    &--disabled {
+      cursor: no-drop;
+      background-color: transparent !important;
+      color: $c-black !important;
+      opacity: 0.4;
+    }
+  }
+}
+
+.success-message {
+  position: fixed;
+  inset: 0;
+  z-index: 1003;
+  background-color: $green-100;
+
+  .top {
+    position: absolute;
+    top: VW(17);
+    left: VW(30);
+    right: VW(30);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    mix-blend-mode: difference;
+
+    @include forMobile {
+      top: VW(10, $mobile);
+      left: VW(10, $mobile);
+      right: VW(14, $mobile);
+    }
+
+    .logo {
+      width: VW(72);
+      height: VW(28);
+      position: relative;
+      transition: opacity 0.4s;
+
+      @include hover {
+        opacity: 0.7;
+      }
+
+      @include forTablet {
+        width: VW(60, $tablet);
+        height: VW(24, $tablet);
+      }
+
+      @include forMobile {
+        width: VW(60, $mobile);
+        height: VW(24, $mobile);
+      }
+    }
+
+    .cross {
+      width: VW(22);
+      height: VW(22);
+      padding: VW(10);
+      border: VW(1) solid $c-white;
+      border-radius: 50%;
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+
+      @include hover {
+        background-color: $c-white;
+
+        .cross__image {
+          filter: invert(1);
+        }
+      }
+
+      @include forTablet {
+        width: VW(20, $tablet);
+        height: VW(20, $tablet);
+        padding: VW(8, $tablet);
+        border: VW(1, $tablet) solid $c-white;
+      }
+
+      @include forMobile {
+        width: VW(20, $mobile);
+        height: VW(20, $mobile);
+        padding: VW(8, $mobile);
+        border: VW(1, $mobile) solid $c-white;
+      }
+
+      &__image {
+        width: 100%;
+        height: 100%;
+        transition: filter 0.3s ease;
+      }
+    }
+  }
+
+  .text {
+    text-align: center;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+
+    .super-text {
+      font-size: VW(170);
+      text-transform: none;
+
+      @include forTablet {
+        font-size: VW(76, $tablet);
+      }
+
+      @include forMobile {
+        font-size: VW(44, $mobile);
+      }
+    }
+
+    .bottom {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: VW(20);
+      margin-top: VW(40);
+
+      @include forTablet {
+        margin-top: VW(60, $tablet);
+        gap: VW(20, $tablet);
+      }
+
+      @include forMobile {
+        margin-top: VW(60, $mobile);
+        gap: VW(10, $mobile);
+      }
+
+      .heart {
+        width: VW(132);
+        height: VW(152);
+
+        @include forMobile {
+          width: VW(120, $mobile);
+          height: VW(140, $mobile);
+        }
+      }
+    }
+  }
+}

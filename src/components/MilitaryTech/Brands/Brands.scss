@@ -1,0 +1,106 @@
+.military-page {
+  .brands {
+    position: relative;
+    margin-top: VW(220);
+
+    @include forTablet {
+      margin-top: VW(120, $tablet);
+    }
+
+    @include forMobile {
+      margin-top: VW(110, $mobile);
+    }
+
+    &__title {
+      margin: 0 auto;
+      text-align: center;
+
+      @include forMobile {
+        text-align: left;
+        margin-left: VW(20, $mobile);
+      }
+    }
+    &__list {
+      margin-top: VW(50);
+      cursor: grab;
+
+      @include forTablet {
+        margin-top: VW(50, $tablet);
+      }
+
+      @include forMobile {
+        margin-top: VW(30, $mobile);
+      }
+
+      &:active {
+        cursor: grabbing;
+      }
+
+      &--destroy {
+        cursor: default !important;
+        .splide__track > .splide__list {
+          display: flex !important;
+          justify-content: center;
+          gap: VW(100);
+        }
+      }
+    }
+    &__item {
+      width: VW(520);
+      height: VW(600);
+      border-radius: VW(5);
+      background: $g-20;
+      padding: VW(50);
+      // margin-right: VW(100) !important;
+
+      @include forTablet {
+        height: VW(260, $tablet);
+        padding: VW(30, $tablet);
+        border-radius: VW(5, $tablet);
+      }
+
+      @include forMobile {
+        height: VW(120, $mobile);
+        padding: VW(10, $mobile);
+        border-radius: VW(5, $mobile);
+      }
+    }
+
+    &__image {
+      width: 100%;
+      height: 100%;
+      border-radius: VW(5);
+      background: $g-20;
+    }
+
+    .slider-progress {
+      background-color: $g-20;
+
+      position: absolute;
+      bottom: VW(-30);
+      left: 50%;
+      width: VW(400);
+      height: VW(10);
+
+      transform: translate(-50%, 100%);
+
+      @include forTablet {
+        width: VW(200, $tablet);
+        height: VW(8, $tablet);
+        bottom: VW(-20, $tablet);
+      }
+
+      @include forMobile {
+        width: VW(300);
+        bottom: VW(-10, $mobile);
+      }
+
+      &__bar {
+        width: 0;
+        height: 100%;
+        background-color: $g-70;
+        transition: width 400ms ease;
+      }
+    }
+  }
+}

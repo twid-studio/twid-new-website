@@ -1,0 +1,58 @@
+.military-page {
+  .military-services {
+    margin-top: VW(110);
+
+    @include forTablet {
+      margin-top: VW(140, $tablet);
+    }
+    @include forMobile {
+      margin-top: VW(110, $mobile);
+    }
+
+    &__title {
+      margin: 0 auto;
+      text-align: center;
+
+      @include forMobile {
+        text-align: left;
+        margin-left: VW(10, $mobile);
+      }
+    }
+
+    &__list {
+      margin-top: VW(30);
+    }
+
+    &__item {
+      padding: VW(30);
+      cursor: default;
+      transition: color 0.3s ease, background-color 0.3s ease;
+
+      @include hover {
+        color: $c-white;
+        background-color: $c-black !important;
+      }
+
+      @include forTablet {
+        padding: VW(20, $tablet);
+      }
+
+      @include forMobile {
+        padding: VW(10, $mobile);
+      }
+
+      &-text {
+        width: VW(550);
+        margin-top: VW(20);
+
+        @include forTablet {
+          width: 70%;
+        }  
+
+        @include forMobile {
+          width: 80%;
+        }  
+      }
+    }
+  }
+}

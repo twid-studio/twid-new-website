@@ -1,8 +1,8 @@
 const fallbackData = {
-  documentTitle: "RTRTS TMPLATE",
+  title: "RTRTS TMPLATE",
   documentKeywords:
     "nextjs, next.js, creative, creative development, framer-motion",
-  documentDescription:
+  description:
     "the ideal template for creative work, featuring stunning components and fluid functionality on nextjs.",
   documentImage: "/images/screenshot.png",
 };
@@ -15,13 +15,13 @@ export async function generatePagesMetadata(endpoint) {
   const data = preparedData.seo || fallbackData;
 
   return {
-    title: data.documentTitle,
+    title: data.title,
     keywords: data.documentKeywords,
-    description: data.documentDescription,
+    description: data.description,
     openGraph: {
-      title: data.documentTitle,
+      title: data.title,
       keywords: data.documentKeywords,
-      description: data.documentDescription,
+      description: data.description,
       url: "",
       images: [
         {

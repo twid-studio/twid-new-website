@@ -1,0 +1,117 @@
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background-color: $c-white;
+
+  &-list {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    &__item {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background-color 0.4s, color 0.4s;
+    }
+
+    &__link {
+      display: block;
+      padding: VW(20) VW(30);
+      width: fit-content;
+      transition: color 0.4s;
+
+      @include forTablet {
+        padding: VW(20, $tablet) VW(30, $tablet);
+        width: 100%;
+      }
+
+      @include forMobile {
+        padding: VW(14, $mobile) VW(30, $mobile);
+        width: 100%;
+      }
+    }
+  }
+
+  &-socials {
+    position: absolute;
+    bottom: VW(30);
+    left: 50%;
+    transform: translate(-50%, 0);
+    display: flex;
+    gap: VW(20);
+
+    @include forTablet {
+      bottom: VW(20, $tablet);
+      gap: VW(20, $tablet);
+    }
+    @include forMobile {
+      bottom: VW(10, $mobile);
+      gap: VW(10, $mobile);
+      width: 100%;
+      justify-content: space-evenly;
+    }
+
+    &__item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: VW(40);
+      height: VW(40);
+      padding: VW(5);
+      border-radius: 50%;
+      border: VW(1) solid $c-black;
+      background-color: rgba($c-white, 0.2);
+      transition: background-color 0.4s, color 0.4s;
+
+      @include forTablet {
+        width: VW(30, $tablet);
+        height: VW(30, $tablet);
+        padding: VW(5, $tablet);
+      }
+
+      @include forMobile {
+        width: VW(30, $mobile);
+        height: VW(30, $mobile);
+        padding: VW(5, $mobile);
+      }
+
+      @include hover {
+        background-color: $c-black;
+        color: $c-white;
+
+        img {
+          filter: invert(1);
+        }
+      }
+
+      img {
+        transition: filter 0.4s;
+      }
+
+    }
+
+  }
+
+  &__bg {
+    width: 100%;
+    height: 100%;
+
+    &-wrapper {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background-color: $c-white;
+      transition: opacity 0.4s, filter 0.2s;
+    }
+  }
+}

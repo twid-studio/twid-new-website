@@ -1,25 +1,30 @@
 import localFont from "next/font/local";
 import "@/styles/reset.scss";
-import {
-  ScrollProvider,
-} from "@/lib/providers/ScrollProvider/ScrollProvider";
+import { ScrollProvider } from "@/lib/providers/ScrollProvider/ScrollProvider";
 import Header from "@/utils/Header/Header";
 import Footer from "@/utils/Footer/Footer";
+import { LocaleProvider } from "@/lib/providers/LocaleContext/LocaleContext";
 
-const neueHaasDisplay = localFont({
+const twidGrotesk = localFont({
   src: [
     {
-      path: "./fonts/NeueHaasDisplay/NeueHaasDisplayBold.ttf",
-      weight: "700",
-      style: "normal",
-    },
-    {
-      path: "./fonts/NeueHaasDisplay/NeueHaasDisplayRoman.ttf",
+      path: "./fonts/TwidGrotesk-Regular.woff2",
       weight: "400",
       style: "normal",
     },
   ],
-  variable: "--font-neue-haas-display",
+  variable: "--font-twid-grotesk",
+});
+
+const arialMT = localFont({
+  src: [
+    {
+      path: "./fonts/ArialMT.woff2",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-arial-mt",
 });
 
 export const metadata = {
@@ -29,11 +34,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="html">
-      <body className={`${neueHaasDisplay.variable} body`}>
-        <ScrollProvider scrollBar></ScrollProvider>
-        <Header />
+      <body className={`${twidGrotesk.variable} ${arialMT.variable} body`}>
+        {/* <ScrollProvider scrollBar></ScrollProvider> */}
         {children}
-        <Footer />
       </body>
     </html>
   );

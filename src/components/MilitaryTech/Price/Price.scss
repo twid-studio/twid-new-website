@@ -1,0 +1,53 @@
+.military-page {
+  .price {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: VW(100);
+    padding: VW(60) VW(60) VW(60) VW(110);
+    background-color: $g-20;
+    width: VW(500);
+    border-radius: VW(10);
+
+    @include forTablet {
+      padding: VW(40, $tablet) VW(40, $tablet) VW(40, $tablet) VW(80, $tablet);
+      width: VW(350, $tablet);
+      gap: VW(70, $tablet);
+      border-radius: VW(5, $tablet);
+    }
+    
+    @include forMobile {
+      padding: VW(20, $mobile) VW(20, $mobile) VW(20, $mobile) VW(40, $mobile);
+      width: VW(220, $mobile);
+      gap: VW(50, $mobile);
+      border-radius: VW(5, $mobile);
+    }
+
+    &-wrapper {
+      height: 85lvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      @include forMobile {
+        height: auto;
+        aspect-ratio: 3/4;
+      }
+    }
+
+    &__icon {
+      width: VW(40);
+      height: VW(40);
+
+      @include forTablet {
+        width: VW(35, $tablet);
+        height: VW(35, $tablet);
+      }
+
+      @include forMobile {
+        width: VW(25, $mobile);
+        height: VW(25, $mobile);
+      }
+    }
+  }
+}

@@ -1,72 +1,138 @@
 .header {
-  align-items: center;
-  background-color: #8e8e8e2d;
-  backdrop-filter: blur(2vw);
-  display: flex;
-  flex-direction: row;
-  height: 3vw;
-  justify-content: space-between;
-  z-index: 10;
-  padding: 0 6.5vw;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-
-  @include mq() {
-    height: 14vw;
-    justify-content: space-between;
-    padding: 0 6.3vw;
+  padding: VW(20) VW(30);
+  z-index: 1000;
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  mix-blend-mode: exclusion;
+  
+  @include forTablet {
+    mix-blend-mode: normal;
+    background-color: $c-white;
+    border-bottom: VW(1) solid $g-70;
+    padding: VW(10, $tablet) VW(20, $tablet);
   }
+  
+  @include forMobile {
+    mix-blend-mode: normal;
+    background-color: $c-white;
+    border-bottom: VW(1) solid $g-70;
+    padding: VW(5, $mobile) VW(10, $mobile);
+  }
+  
+  &-text {
+    position: absolute;
+    left: 50%;
+    top: VW(90, $tablet);
+    transform: translateX(-50%);
+    width: VW(250, $tablet);
+    text-align: center;
+    mix-blend-mode: exclusion;
+    color: $c-white;
 
-  &__wrapper {
-    display: flex;
-    align-items: center;
-    gap: 1.8vw;
-    height: 100%;
-
-    @include mq() {
-      display: none;
+    @include forMobile {
+      top: VW(50, $mobile);
+      width: VW(100, $mobile);
     }
   }
 
   &__logo {
-    height: 70%;
-    position: relative;
-    z-index: 100;
+    width: VW(72);
+    height: VW(28);
 
+    @include forTablet {
+      width: VW(60, $tablet);
+      height: VW(24, $tablet);
+      filter: invert(1);
+    }
 
-    @include mq() {
-      width: 14.7vw;
-      height: 13.5vw;
+    @include forMobile {
+      width: VW(60, $mobile);
+      height: VW(24, $mobile);
+      filter: invert(1);
+    }
+
+    &-link {
+      transition: opacity 0.4s;
+      
+      @include hover {
+        opacity: 0.7;
+      }
     }
   }
 
-  &__list_links {
+  &__middle {
     display: flex;
     align-items: center;
-    gap: 0.5vw;
+    justify-content: center;
+    gap: VW(5);
 
-    @include mq() {
-      display: none;
+    @include forDesktop {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    @include forTablet {
+      gap: VW(5, $tablet);
+      flex-direction: row-reverse;
+    }
+
+    @include forMobile {
+      gap: VW(5, $mobile);
+      flex-direction: row-reverse;
+    }
+
+    .menu-button {
+      cursor: pointer;
+      padding: VW(8) VW(20) VW(8) VW(10);
+      border-color: $c-white !important;
+
+      @include forTablet {
+        padding: VW(8, $tablet) VW(20, $tablet) VW(8, $tablet) VW(10, $tablet);
+        background-color: $red-100;
+        color: $c-white;
+
+        img {
+          filter: invert(1);
+        }
+      }
+
+      @include forMobile {
+        padding: VW(5, $mobile) VW(14, $mobile) VW(5, $mobile) VW(8, $mobile);
+        background-color: $red-100;
+        color: $c-white;
+
+        img {
+          filter: invert(1);
+        }
+      }
+    }
+
+    .lang-swith {
+      height: 100%;
+
+      @include forDesktop {
+        filter: invert(1);
+      }
+
+      @include forTablet {
+        padding: VW(13, $tablet) VW(16, $tablet);
+      }
+
+      @include forMobile {
+        padding: VW(8, $mobile) VW(10, $mobile);
+      }
     }
   }
 
-  &__link {
-    font-size: 1.2vw;
-    padding: 0.5vw 0.7vw;
-    position: relative;
-    z-index: 1;
-    
-    & > span {
-      position: relative;
-      z-index: 1;  
-    }
-  }
-
-  &__nav {
-    @include mq($tablet + 1, ">") {
-      display: none;
-    }
+  &__title {
+    color: $c-white;
   }
 }

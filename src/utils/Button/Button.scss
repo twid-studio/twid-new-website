@@ -1,0 +1,105 @@
+.button {
+  align-items: center;
+  background: none;
+  border: VW(1) solid;
+  border-radius: 10vw;
+
+  display: inline-flex;
+  gap: VW(12);
+  justify-content: center;
+  line-height: 1.2;
+  max-width: 100%;
+  overflow: hidden;
+  padding: VW(13) VW(20) VW(13) VW(14);
+  position: relative;
+  text-align: center;
+  transition: opacity 0.4s, color 0.4s, border-color 0.4s, background-color 0.4s;
+
+  @include forTablet {
+    padding: VW(8, $tablet) VW(20, $tablet) VW(8, $tablet) VW(10, $tablet);
+    gap: VW(8, $tablet);
+  }
+
+  @include forMobile {
+    padding: VW(8, $mobile) VW(20, $mobile) VW(8, $mobile) VW(10, $mobile);
+    gap: VW(8, $mobile);
+  }
+  
+  &--not-icon {
+    padding: VW(13) VW(20);
+
+    @include forTablet {
+      padding: VW(13, $tablet) VW(12, $tablet);
+    }  
+  }
+
+  &--black {
+    background-color: $c-black;
+    color: $c-white;
+    border-color: $c-black;
+    @include hover {
+      background-color: $g-10;
+      color: $c-black;
+      border-color: $g-10;
+
+      img {
+        filter: invert(1);
+      }
+    }
+  }
+
+  &--transparent {
+    background-color: transparent;
+    color: $c-black;
+    @include hover {
+      background-color: $c-black;
+      color: $c-white;
+      border-color: $c-black;
+
+      img {
+        filter: invert(1);
+      }
+    }
+  }
+  
+  &--white {
+    background-color: $c-white;
+    color: $c-black;
+    border-color: transparent;
+    @include hover {
+      background-color: $c-black;
+      color: $c-white;
+
+      img {
+        filter: invert(1);
+      }
+    }
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    height: VW(30);
+    width: VW(30);
+    line-height: 0.6;
+    border: 0.063em solid;
+
+    @include forTablet {
+      height: VW(30, $tablet);
+      width: VW(30, $tablet);
+    }
+
+    @include forMobile {
+      height: VW(24, $mobile);
+      width: VW(24, $mobile);
+    }
+
+    img {
+      width: 80%;
+      height: 70%;
+      transition: filter 0.4s;
+    }
+  }
+}

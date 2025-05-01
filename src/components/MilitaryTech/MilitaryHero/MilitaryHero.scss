@@ -1,0 +1,132 @@
+.military-page {
+  .hero {
+    background-color: $green-100;
+    overflow: hidden;
+
+    @include forTablet {
+      margin-top: VW(70, $tablet);
+    }
+    
+    @include forMobile {
+      margin-top: VW(40, $mobile);
+    }
+    
+    &-top {
+      position: relative;
+      width: 100%;
+      padding: VW(250) 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      @include forTablet {
+        padding: VW(200, $tablet) 0;
+      }
+
+      @include forMobile {
+        padding: VW(200, $mobile) 0;
+      }
+
+      @media (hover: none) {
+        transform: none !important;
+      }
+      
+      .text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: VW(20);
+        align-items: flex-end;
+
+        @include forTablet {
+          gap: VW(20, $tablet);
+        }  
+
+        @include forMobile {
+          align-items: flex-start;
+          padding: VW(0, $mobile) VW(10, $mobile);
+        }  
+      }
+    }
+
+    &__subtitle {
+      width: VW(715);
+
+      @include forTablet {
+        width: VW(390, $tablet);
+      }
+
+      @include forMobile {
+        width: 100%;
+      }
+    }
+
+    &__lines {
+      height: auto;
+      width: VW(1820);
+      position: absolute;
+
+      @include forTablet {
+        width: VW(1200, $tablet);
+      }
+
+      @include forMobile {
+        width: VW(900, $mobile);
+      }
+
+      &--top {
+        top: 0;
+      }
+
+      &--bottom {
+        bottom: 0;
+      }
+    }
+
+    .slogan {
+      width: 100%;
+      border-top: VW(1) solid $c-black;
+      display: flex;
+      justify-content: center;
+      background-color: $green-100;
+      position: relative;
+      z-index: 2;
+      
+      &-content {
+        width: VW(620);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: VW(90);
+        padding: VW(10);
+        background-color: $c-black;
+        color: $c-white;
+
+        @include forTablet {
+          width: VW(290, $tablet);
+          padding: VW(10, $tablet);
+        }
+
+        @include forMobile {
+          width: VW(200, $mobile);
+          padding: VW(10, $mobile);
+        }  
+      }
+
+      &__logo {
+        width: VW(73);
+        height: VW(73);
+
+        @include forTablet {
+          width: VW(34, $tablet);
+          height: VW(34, $tablet);
+        }
+
+        @include forMobile {
+          width: VW(34, $mobile);
+          height: VW(34, $mobile);
+        }  
+      }
+    }
+  }
+}
