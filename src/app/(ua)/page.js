@@ -9,7 +9,7 @@ export const generateMetadata = async () => generatePagesMetadata(URL_HOME);
 export default async function Home() {
   const data = await getFetchData(URL_HOME);
 
-  return (
+  return data && (
     <DataProvider data={data}>
       <HomePage />
     </DataProvider>

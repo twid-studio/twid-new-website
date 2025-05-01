@@ -53,7 +53,7 @@ export default function Contacts({ allData }) {
             href={`tel:${data?.phone.replace(/[\s()\-]/g, "") || ""}`}
             className="info__link"
           >
-            <h1>{data.phone}</h1>
+            <h1>{data?.phone}</h1>
           </Link>
           <MailButton email={data?.email} />
           <Button
@@ -76,7 +76,7 @@ export default function Contacts({ allData }) {
           className="contacts-link__icon"
         />
         
-        <p>{preparedData?.form.fixed_button}</p>
+        <p>{preparedData?.form?.fixed_button}</p>
       </Link>
     </>
   );

@@ -7,10 +7,15 @@ import Header from "@/utils/Header/Header";
 import React from "react";
 
 export default async function template({ children }) {
-  // Fetch both language versions in parallel
+  // Add cache options to allow static rendering
+  const fetchOptions = { 
+    next: { revalidate: 3600 } // Cache data for 1 hour
+  };
+
+  // Fetch both language versions in parallel with caching
   const [uaData, enData] = await Promise.all([
-    getFetchData(URL_OPTIONS),
-    getFetchData(EN_URL_OPTIONS)
+    getFetchData(URL_OPTIONS, fetchOptions),
+    getFetchData(EN_URL_OPTIONS, fetchOptions)
   ]);
 
   // Combine data into a single object with language keys
@@ -20,7 +25,7 @@ export default async function template({ children }) {
     ...uaData
   };
 
-  return (
+  return multilingualData && (
     <LocaleProvider>
       <Header allData={multilingualData} />
       {children}

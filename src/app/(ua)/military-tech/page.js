@@ -9,7 +9,7 @@ export const generateMetadata = async () => generatePagesMetadata(URL_MILITARY_T
 export default async function Page() {
   const data = await getFetchData(URL_MILITARY_TECH);
 
-  return (
+  return data && (
     <DataProvider data={data}>
       <MilitaryTech />
     </DataProvider>
