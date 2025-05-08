@@ -1,0 +1,66 @@
+.categories {
+  grid-column: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: max(VW(10), 5px);
+
+  @include forTablet {
+    grid-column: 1/2;
+  }
+
+  &__wrapper {
+    margin-top: VW(50);
+
+    @include forTablet {
+      margin-top: VW(60, $tablet);
+    }
+
+    @include forMobile {
+      margin-top: VW(100, $mobile);
+    }
+  }
+}
+
+.awards {
+  margin-top: VW(100);
+  grid-column: 2;
+
+  @include forTablet {
+    grid-column: 2/3;
+    grid-row: 1;
+    margin-top: 0;
+  }
+
+  @include forMobile {
+    margin-top: 0;
+  }
+
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: max(VW(10), 10px);
+    margin-top: max(VW(10), 10px);
+
+    .award {
+      padding: max(VW(10), 10px);
+      border-radius: max(VW(5), 5px);
+      background: $g-20;
+      width: fit-content;
+      width: VW(80);
+      height: VW(80);
+
+      @include forTablet {
+        padding: max(VW(10, $tablet), 10px);
+        width: VW(100, $tablet);
+        height: VW(100, $tablet);
+      }
+     
+      @include forMobile {
+        padding: VW(10, $mobile);
+        width: VW(60, $mobile);
+        height: VW(60, $mobile);
+      }
+    }
+  }
+}

@@ -1,0 +1,128 @@
+.work-details {
+  .hero {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+
+    @include forMobile {
+      height: auto;
+      aspect-ratio: 9/16;
+    }  
+
+    &__content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    &__container {
+      position: absolute;
+      bottom: VW(30);
+      left: 0;
+      right: 0;
+      align-items: center;
+
+      @include forMobile {
+        align-items: flex-start;
+        bottom: VW(30, $mobile);
+        left: VW(10, $mobile);
+      }    
+    }
+
+    &__text {
+      display: flex;
+      flex-direction: column;
+      gap: .5em;
+    }
+
+    &__link {
+      color: var(--color);
+      z-index: 1;
+      padding: VW(12);
+      border-radius: min(VW(10), 10px);
+      background-color: rgba($g-70, 0.2);
+      backdrop-filter: blur(1vw);
+      width: fit-content;
+
+      display: flex;
+      flex-direction: column;
+      gap: VW(10);
+
+      transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+
+      @include hover {
+        background-color: rgba($g-80, 0.34);
+        color: $red-100;
+
+        .hero__link-image {
+          opacity: 0.8;
+        }
+      }
+
+      @include forTablet {
+        padding: VW(10, $tablet);
+        gap: VW(5, $tablet);
+      }
+
+      &--fixed {
+        position: fixed;
+        top: VW(15);
+        right: VW(560);
+        z-index: 1001;
+        min-width: VW(220);
+        color: $c-white;
+        mix-blend-mode: difference;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out, color 0.3s ease-in-out;
+        pointer-events: none;
+
+        @include forMobile {
+          opacity: 1 !important;
+          top: VW(55, $mobile);
+          right: VW(10, $mobile);
+          padding: VW(10, $mobile);
+          border-radius: VW(5, $mobile);
+          color: $c-black;
+          mix-blend-mode: normal;
+          background-color: rgba($g-70, 0.6);
+        }
+
+        &--active {
+          opacity: 1;
+          pointer-events: all;
+        }
+
+        &--not-desktop {
+          display: none;
+
+          @include forMobile {
+            display: flex;
+          }
+        }
+
+        &--not-mobile {
+          display: flex;
+
+          @include forMobile {
+            display: none !important;
+          }
+        } 
+      }
+
+      &-image {
+        width: VW(222);
+        height: VW(130);
+        border-radius: min(VW(5), 5px);
+        transition: opacity 0.3s ease-in-out;
+
+        @include forTablet {
+          width: VW(120, $tablet);
+          height: VW(70, $tablet);
+        }
+      }
+    }
+  }
+}

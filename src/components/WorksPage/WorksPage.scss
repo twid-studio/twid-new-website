@@ -1,0 +1,41 @@
+.works-page {
+  .title {
+    position: relative;
+    width: 100%;
+    padding-top: VW(220);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2em;
+
+    @include forTablet {
+      padding-top: VW(320, $tablet);
+      gap: 1.7em;
+      margin-bottom: VW(80, $tablet);
+    }
+    
+    @include forMobile {
+      gap: 1em;
+      align-items: flex-start;
+      width: auto;
+      padding-top: VW(220, $mobile);
+      padding-right: VW(10, $mobile);
+      padding-left: VW(10, $mobile);
+      margin-bottom: VW(70, $mobile);
+    }
+
+    &-text {
+      width: VW(740);
+      transform: translateX(30%);
+
+      @include forTablet {
+        width: VW(500, $tablet);
+      }
+
+      @include forMobile {
+        width: auto;
+        transform: translateX(0);
+      }  
+    }
+  }
+}

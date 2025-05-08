@@ -1,0 +1,28 @@
+.more-works {
+  margin-top: VW(200);
+
+  &__title {
+    text-align: center;
+  }
+
+  &__content {
+    display: flex;
+    margin-top: VW(30);
+
+    @include forMobile {
+      flex-direction: column;
+      align-items: center;
+      margin-top: VW(20, $mobile);
+    }
+
+    .work-card {
+      height: max(VW(600), 300px);
+    }
+  }
+
+  &__button {
+    margin: VW(30) auto 0;
+    display: flex !important;
+    width: fit-content !important;
+  }
+}

@@ -1,0 +1,111 @@
+.text-fullmedia-section {
+  margin-bottom: VW(120);
+
+  @include forMobile {
+    margin-bottom: VW(30, $mobile);
+  }
+
+  .text-wrapper {
+    @include forMobile {
+      gap: VW(10, $mobile);
+    }
+
+    .text--second {
+      grid-column: 2;
+    }
+  }
+
+  &__content {
+    margin-top: VW(50);
+
+    @include forTablet {
+      margin-top: VW(30, $tablet);
+    }
+    
+    @include forMobile {
+      margin-top: VW(10, $mobile);
+    }
+  } 
+}
+
+.text-halfmedia-section {
+  position: relative;
+  margin-bottom: VW(30);
+
+  @include forMobile {
+    flex-direction: column-reverse !important;
+    gap: VW(20, $mobile) !important;
+    margin-bottom: VW(30, $mobile);
+  }
+
+  &--right {
+    grid-template-columns: 41.666% 50% !important;
+    .text-wrapper {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .medias {
+      grid-column: 2;
+    }  
+  }
+
+  .text-wrapper {
+    position: sticky;
+    top: VW(70);
+    height: fit-content;
+
+    display: flex;
+    flex-direction: column;
+    gap: .4em;
+
+    @include forTablet {
+      position: static;
+    }
+
+    @include forMobile {
+      position: static;
+      top: 0;
+      height: fit-content;
+    }  
+
+    .text {
+      p {
+        &:not(:last-child) {
+          margin-bottom: 1em;
+        }
+      }
+    }
+  }
+
+  .medias {
+    display: flex;
+    flex-direction: column;
+    gap: VW(30);
+  }
+}
+
+.media-section {
+  margin-bottom: VW(30);
+
+  @include forMobile {
+    margin-bottom: VW(30, $mobile);
+  }
+
+  &__content {
+    iframe {
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 16 / 9;
+    }
+  }
+}
+
+.text-section {
+  margin-top: VW(30);
+
+  @include forMobile {
+    margin-top: VW(10, $mobile);
+    gap: VW(10, $mobile) !important;
+  }
+}

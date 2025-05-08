@@ -5,7 +5,7 @@ export async function getFetchData(apiUrl) {
     });
 
     if (!response.ok) {
-      throw new Error(`Error: ${response.status} ${response.statusText}`);
+      throw new Error(`${response.status} ${response.statusText} \n ${apiUrl}`);
     }
 
     return response.json();

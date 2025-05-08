@@ -12,7 +12,6 @@ export default function Brands() {
   const progressBarRef = useRef(null);
   const splideRef = useRef(null);
 
-
   const swiperOptions = {
     arrows: false,
     pagination: false,

@@ -91,7 +91,7 @@
 
     .menu-button {
       cursor: pointer;
-      padding: VW(8) VW(20) VW(8) VW(10);
+      padding: VW(6) VW(18) VW(6) VW(8);
       border-color: $c-white !important;
 
       @include forTablet {
@@ -117,6 +117,7 @@
 
     .lang-swith {
       height: 100%;
+      padding: VW(10) VW(14);
 
       @include forDesktop {
         filter: invert(1);

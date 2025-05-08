@@ -1,0 +1,50 @@
+.filters {
+  width: max-content;
+  display: flex;
+  gap: VW(10);
+
+  @include forTablet {
+    gap: VW(10, $tablet);
+  }
+
+  @include forMobile {
+    gap: VW(5, $mobile);
+  }
+
+  &-container {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: $c-white;
+    padding-top: VW(80);
+    padding-bottom: VW(20);
+    overflow: scroll;
+    scrollbar-width: none;
+
+    @include forTablet {
+      top: VW(70, $tablet);
+      padding-top: VW(20, $tablet);
+      padding-bottom: VW(20, $tablet);
+    }
+
+    @include forMobile {
+      top: VW(45, $mobile);
+      padding-top: VW(10, $mobile);
+      padding-bottom: VW(10, $mobile);
+    }
+  }
+
+  .filter-button {
+    transition: color 0.3s ease, background-color 0.3s ease;
+
+    @include hover {
+      color: $red-100;
+    }
+
+    &--active {
+      color: $c-white !important;
+      background-color: $c-black;
+      pointer-events: none;
+    }
+  }
+}

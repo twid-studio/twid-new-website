@@ -44,6 +44,14 @@
   }
 }
 
+[data-hide-for-mobile--flex] {
+  display: flex;
+
+  @include forMobile() {
+    display: none !important;
+  }
+}
+
 [data-only-mobile] {
   display: none;
 

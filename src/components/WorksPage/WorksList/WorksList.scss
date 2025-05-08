@@ -1,0 +1,10 @@
+.works-page {
+  .works-list {
+    display: flex;
+    margin-top: VW(10);
+
+    &__wrapper {
+      width: 100%;
+    }
+  }
+}

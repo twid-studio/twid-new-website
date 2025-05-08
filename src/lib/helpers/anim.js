@@ -9,6 +9,26 @@ export const anim = (variants) => {
   };
 };
 
+export const fadeIn = (durationAnim = 0.5, durationExit = 0.3 ) => ({
+  initial: {
+    opacity: 0,
+  },
+  animate: {
+    opacity: 1,
+    transition: {
+      duration: durationAnim,
+      ease: ease.inOutExpo,
+    },
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      duration: durationExit,
+      ease: ease.inOutExpo,
+    },
+  },
+});
+
 export const MenuAnim = {
   wrapper: {
     initial: {

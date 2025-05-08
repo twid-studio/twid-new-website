@@ -27,17 +27,3 @@
     }
   }
 }
-
-.category {
-  padding: VW(18);
-  border-radius: VW(5);
-  background: $g-20;
-
-  @include forTablet {
-    padding: VW(20, $tablet);
-  }
-  @include forMobile {
-    padding: VW(10, $mobile);
-    border-radius: VW(3, $mobile);
-  }
-}

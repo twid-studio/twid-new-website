@@ -1,0 +1,20 @@
+.sections__wrapper {
+  margin-top: VW(120);
+
+  @include forTablet {
+    margin-top: VW(120, $tablet);
+  }
+
+  @include forMobile {
+    margin-top: VW(120, $mobile);
+  }
+
+  .text {
+    @extend %h2;
+    font-size: VW(28);
+
+    @include forMobile {
+      font-size: VW(16, $mobile);
+    } 
+  }
+}

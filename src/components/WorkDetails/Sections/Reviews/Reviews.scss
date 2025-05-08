@@ -1,0 +1,122 @@
+.reviews-section {
+  margin: VW(30) 0;
+  position: relative;
+  padding-bottom: VW(30);
+
+  display: flex;
+  gap: VW(30);
+
+  @include forTablet {
+    margin: VW(20, $tablet) 0;
+    gap: VW(20, $tablet);
+  }
+
+  @include forMobile {
+    margin: VW(10, $mobile) 0;
+    gap: VW(10, $mobile) !important;
+    padding-bottom: VW(10, $mobile);
+  }
+
+  &--static {
+    padding-bottom: 0 !important;
+  }
+
+  &__list {
+    &--static {
+      display: flex;
+      gap: VW(30);
+      width: 100%;
+      height: 100%;
+
+      @include forTablet {
+        gap: VW(20, $tablet);
+      }
+      @include forMobile {
+        gap: VW(10, $mobile);
+      }
+    }
+  }
+
+  .review {
+    width: 33%;
+    height: 100%;
+    border-top: VW(1) solid $c-black;
+    border-bottom: VW(1) solid $c-black;
+    padding: VW(20) 0;
+
+    @include forTablet {
+      width: 50%;
+    }
+    @include forMobile {
+      width: 100%;
+      padding: VW(10, $mobile) 0;
+    }
+
+    .person {
+      display: flex;
+      align-items: center;
+      gap: VW(10);
+      margin-bottom: VW(20);
+
+      @include forTablet {
+        margin-bottom: VW(10, $tablet);
+      }
+      @include forMobile {
+        margin-bottom: VW(10, $mobile);
+        gap: VW(10, $mobile);
+      }
+
+      &__image {
+        width: VW(72);
+        height: VW(72);
+        border-radius: 50%;
+
+        @include forTablet {
+          width: VW(50, $tablet);
+          height: VW(50, $tablet);
+        }
+        @include forMobile {
+          width: VW(40, $mobile);
+          height: VW(40, $mobile);
+        }
+      }
+
+      &__info {
+        display: flex;
+        flex-direction: column;
+        gap: VW(5);
+      }
+    }
+  }
+
+  .slider-progress {
+    background-color: $g-20;
+
+    position: absolute;
+    bottom: VW(-30);
+    left: 50%;
+    width: VW(400);
+    height: VW(5);
+
+    transform: translate(-50%, 100%);
+
+    @include forTablet {
+      width: VW(200, $tablet);
+      height: VW(4, $tablet);
+      bottom: VW(0, $tablet);
+    }
+
+    @include forMobile {
+      width: VW(150, $mobile);
+      height: VW(3, $mobile);
+      bottom: VW(0, $mobile);
+    }
+
+    &__bar {
+      width: 0;
+      height: 100%;
+      background-color: $g-70;
+      transition: width 400ms ease;
+    }
+  }
+}

@@ -1,0 +1,156 @@
+.work-card {
+  position: relative;
+  width: 100%;
+  height: max(VW(600), 300px);
+  overflow: hidden;
+  transition: filter 0.3s ease-in-out;
+  display: block;
+
+  @include hover {
+    filter: invert(1);
+  }
+
+  &__image {
+    width: 100%;
+    // height: auto;
+    height: 100%;
+    scale: 1.05;
+    transform-origin: center;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: VW(30);
+    position: absolute;
+    inset: 0;
+
+    @include forTablet {
+      padding: VW(20, $tablet);
+    }
+
+    @include forMobile {
+      padding: VW(10, $mobile);
+    }
+  }
+
+  &__categories {
+    display: flex;
+    gap: VW(10);
+
+    @include forTablet {
+      gap: VW(10, $tablet);
+    }
+
+    @include forMobile {
+      gap: VW(5, $mobile);
+      flex-wrap: wrap;
+      width: 70%;
+    }
+
+    .work-category {
+      padding: 0.2em 0.45em;
+      border-radius: 10vw;
+      background-color: $g-20;
+      color: $c-black;
+      line-height: 1.2em;
+
+      @include forTablet {
+        padding: 0.2em 0.55em;
+      }
+
+      @include forMobile {
+        padding: 0.3em 0.5em;
+      }
+    }
+  }
+
+  .bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    .text {
+      width: 70%;
+
+      @include forTablet {
+        width: 100%;
+
+        span {
+          font-size: VW(16, $tablet);
+        }
+
+        h1 {
+          font-size: VW(25, $tablet);
+        }
+      }
+
+      @include forMobile {
+        width: 100%;
+      }  
+    }
+
+    .website-link {
+      z-index: 1;
+      padding: VW(12);
+      border-radius: max(VW(10), 5px);
+      background-color: rgba($g-70, 0.2);
+      backdrop-filter: blur(1vw);
+      width: min-content;
+      height: fit-content;
+
+      display: flex;
+      flex-direction: column;
+      gap: VW(10);
+
+      transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+
+      @include hover {
+        background-color: rgba($g-80, 0.34);
+        color: $red-100;
+
+        .website-link__image {
+          opacity: 0.8;
+        }
+      }
+
+      @include forTablet {
+        padding: VW(10, $tablet);
+        gap: VW(5, $tablet);
+
+        position: absolute;
+        top: VW(20, $tablet);
+        right: VW(20, $tablet);
+      }
+
+      @include forMobile {
+        padding: VW(7, $mobile);
+        gap: VW(5, $mobile);
+
+        position: absolute;
+        top: VW(10, $mobile);
+        right: VW(10, $mobile);
+
+      backdrop-filter: blur(3vw);
+      }
+
+      &__image {
+        width: VW(100);
+        height: VW(58);
+        border-radius: max(VW(3), 3px);
+        transition: opacity 0.3s ease-in-out;
+
+        @include forTablet {
+          width: VW(120, $tablet);
+          height: VW(70, $tablet);
+        }
+
+        @include forMobile {
+          width: VW(80, $mobile);
+          height: VW(50, $mobile);
+        }
+      }
+    }
+  }
+}
