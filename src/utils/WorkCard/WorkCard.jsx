@@ -10,7 +10,7 @@ import { LocaleContext } from "@/lib/providers/LocaleContext/context";
 export const WorkCard = ({ data, ...rest }) => {
   const { lang } = useContext(LocaleContext);
 
-  const preparedLink = `/${lang === "ua" || "en"}/${data?.link.split("https://twid.marketing/")[1]}`
+  const preparedLink = `${lang === "en" ?  "/en" : ""}/${data?.link.split("https://twid.marketing/")[1]}`
   
   return (
     <Link href={preparedLink} className="work-card" {...rest}>
