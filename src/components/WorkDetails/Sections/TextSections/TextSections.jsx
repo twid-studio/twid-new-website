@@ -21,12 +21,15 @@ export const TextFullMediaSection = ({ data }) => {
             />
           )}
         </div>
-      )}{" "}
-     {data?.media?.url && (<Content
-        className="text-fullmedia-section__content"
-        url={data?.media?.url}
-        urlMobile={data?.media?.url_mobile}
-      />)}
+      )}
+      {data?.media?.url && (
+        <Content
+          className="text-fullmedia-section__content"
+          url={data?.media?.url}
+          urlMobile={data?.media?.url_mobile}
+          sizes={data?.media.url_size}
+        />
+      )}
     </section>
   );
 };
@@ -39,14 +42,18 @@ export const TextHalfMediaSection = ({ data }) => {
       })}
     >
       <div className="medias">
-        {data?.media_list.map((media, index) => media?.url && (
-          <Content
-            key={index}
-            className="text-halfmedia-section__content"
-            url={media?.url}
-            urlMobile={media?.url_mobile}
-          />
-        ))}
+        {data?.media_list.map(
+          (media, index) =>
+            media?.url && (
+              <Content
+                key={index}
+                className="text-halfmedia-section__content"
+                url={media?.url}
+                urlMobile={media?.url_mobile}
+                sizes={media?.url_size}
+              />
+            )
+        )}
       </div>
 
       <div className="text-wrapper">
@@ -75,6 +82,7 @@ export const TextQuoteHalfMediaSection = ({ data }) => {
             className="text-halfmedia-section__content"
             url={data.media?.url}
             urlMobile={data.media?.url_mobile}
+            sizes={data?.media.url_size}
           />
         )}
       </div>
@@ -100,6 +108,7 @@ export const MediaSection = ({ data }) => {
           className="media-section__content"
           url={data.media?.url}
           urlMobile={data.media?.url_mobile}
+          sizes={data?.media.url_size}
         />
       ) : (
         <div

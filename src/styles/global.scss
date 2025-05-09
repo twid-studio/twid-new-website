@@ -89,12 +89,41 @@
   }
 }
 
-.lazyload-wrapper {
+.lazyload-wrapper, .content-wrapper {
   height: 100%;
   width: 100%;
-  
+  position: relative;
+
   img, video {
     height: 100%;
     width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  .lazyload-placeholder {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-color: $g-70;
+    animation: placeholderLoading 2s infinite;
+  }
+}
+
+@keyframes placeholderLoading {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes contentAppear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

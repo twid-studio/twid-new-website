@@ -1,14 +1,17 @@
 "use client";
-import React from "react";
+import React, { useContext } from "react";
 import { Content } from "../Content/Content";
 
 import "./WorkCard.scss";
 import Link from "next/link";
 import Image from "next/image";
-import LazyLoad from "../Content/LazyLoad";
+import { LocaleContext } from "@/lib/providers/LocaleContext/context";
 
 export const WorkCard = ({ data, ...rest }) => {
-  const preparedLink = `/${data?.link.split("https://twid.marketing/")[1]}`
+  const { lang } = useContext(LocaleContext);
+
+  const preparedLink = `/${lang === "ua" || "en"}/${data?.link.split("https://twid.marketing/")[1]}`
+  
   return (
     <Link href={preparedLink} className="work-card" {...rest}>
       <Content
@@ -16,6 +19,7 @@ export const WorkCard = ({ data, ...rest }) => {
         urlMobile={data?.media.url_mobile}
         alt={`${data.title} - ${data.company}`}
         className="work-card__image"
+        sizes={data?.media.url_size}
       />
       <div className="content">
         <div className="work-card__categories">

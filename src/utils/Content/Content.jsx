@@ -9,16 +9,26 @@ export const Content = ({
   urlMobile = false,
   lazy = true,
   offestIndex = 1,
+  sizes = false,
   ...rest
 }) => {
   const isVideo = url.match(/\.(mp4|webm)$/) != null;
   const [offset, setOffset] = useState(0);
 
+  // Calculate aspect ratio if sizes is provided
+  const aspectRatio = sizes && sizes.width && sizes.height 
+    ? `${sizes.width} / ${sizes.height}`
+    : null;
+
+  // Create style object with aspect ratio if available
+  const aspectRatioStyle = aspectRatio 
+    ? { style: { aspectRatio }  }
+    : {};
+
   useEffect(() => {
     setOffset(window.innerHeight * offestIndex);
-  }, []);
+  }, [offestIndex]); // Always include this dependency
 
-  // For videos, use media attribute with aspect ratio
   const VideoContent = (props) => (
     <motion.video
       loop
@@ -34,7 +44,6 @@ export const Content = ({
     </motion.video>
   );
 
-  // For images, use picture element with aspect ratio media query
   const ImageContent = (props) =>
     urlMobile ? (
       <motion.picture {...props}>
@@ -45,7 +54,6 @@ export const Content = ({
       <motion.img src={url} width="100%" height="100%" {...props} />
     );
 
-  // Choose the appropriate content based on media type
   const ContentComp = isVideo ? (
     <VideoContent loading="lazy" />
   ) : (
@@ -53,12 +61,13 @@ export const Content = ({
   );
 
   if (!url) {
-    return;
+    return null;
   }
 
   return lazy ? (
-    <LazyLoad offset={offset} {...rest}>
+    <LazyLoad offset={offset} {...aspectRatioStyle} {...rest}>
       {ContentComp}
+      <div className="lazyload-placeholder"></div>
     </LazyLoad>
   ) : isVideo ? (
     <VideoContent {...rest} />
