@@ -28,6 +28,32 @@
   } 
 }
 
+.title-text-fullmedia-section {
+  margin-bottom: VW(120);
+
+  @include forMobile {
+    margin-bottom: VW(30, $mobile);
+  }
+
+  .text-wrapper {
+    @include forMobile {
+      gap: VW(10, $mobile);
+    }
+  }
+
+  &__content {
+    margin-top: VW(50);
+
+    @include forTablet {
+      margin-top: VW(30, $tablet);
+    }
+    
+    @include forMobile {
+      margin-top: VW(10, $mobile);
+    }
+  } 
+}
+
 .text-halfmedia-section {
   position: relative;
   margin-bottom: VW(30);

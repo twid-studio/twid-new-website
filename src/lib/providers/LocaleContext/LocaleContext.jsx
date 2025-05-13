@@ -9,8 +9,8 @@ export const LocaleProvider = ({ children }) => {
     const [lang, setLang] = useState("ua");
 
     useEffect(() => {
-        const isEnPath = path.startsWith("/en");
-        setLang((isEnPath && "en") || "ua");
+      const isEnPath = path.startsWith("/en");
+      setLang((isEnPath && "en") || "ua");
     }, [path]);
 
     return (

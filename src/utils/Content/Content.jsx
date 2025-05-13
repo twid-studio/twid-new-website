@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import LazyLoad from "./LazyLoad";
-import { anim, fadeIn } from "@/lib/helpers/anim";
 
 export const Content = ({
   url,
@@ -13,7 +12,7 @@ export const Content = ({
   ...rest
 }) => {
   const isVideo = url.match(/\.(mp4|webm)$/) != null;
-  const [offset, setOffset] = useState(0);
+  // const [offset, setOffset] = useState(0);
 
   // Calculate aspect ratio if sizes is provided
   const aspectRatio = sizes && sizes.width && sizes.height 
@@ -25,9 +24,9 @@ export const Content = ({
     ? { style: { aspectRatio }  }
     : {};
 
-  useEffect(() => {
-    setOffset(window.innerHeight * offestIndex);
-  }, [offestIndex]); // Always include this dependency
+  // useEffect(() => {
+  //   setOffset(window.innerHeight * offestIndex);
+  // }, [offestIndex]); // Always include this dependency
 
   const VideoContent = (props) => (
     <motion.video
@@ -65,7 +64,7 @@ export const Content = ({
   }
 
   return lazy ? (
-    <LazyLoad offset={offset} {...aspectRatioStyle} {...rest}>
+    <LazyLoad offset={1000} {...aspectRatioStyle} {...rest}>
       {ContentComp}
       <div className="lazyload-placeholder"></div>
     </LazyLoad>

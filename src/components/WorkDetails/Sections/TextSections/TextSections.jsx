@@ -34,6 +34,38 @@ export const TextFullMediaSection = ({ data }) => {
   );
 };
 
+export const TitleTextFullMediaSection = ({ data }) => {
+  return (
+    <section className="title-text-fullmedia-section container">
+      {(data?.text || data?.title) && (
+        <div className="work-container">
+          <div className="text-wrapper">
+            {data?.title && (
+              <h1
+                dangerouslySetInnerHTML={{ __html: data?.title }}
+              />
+            )}
+            {data?.text && (
+              <div
+                className="text"
+                dangerouslySetInnerHTML={{ __html: data?.text }}
+              />
+            )}
+          </div>
+        </div>
+      )}
+      {data?.media?.url && (
+        <Content
+          className="title-text-fullmedia-section__content"
+          url={data?.media?.url}
+          urlMobile={data?.media?.url_mobile}
+          sizes={data?.media.url_size}
+        />
+      )}
+    </section>
+  );
+};
+
 export const TextHalfMediaSection = ({ data }) => {
   return (
     <section
