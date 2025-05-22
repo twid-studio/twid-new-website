@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import LazyLoad from "./LazyLoad";
 
@@ -9,6 +9,7 @@ export const Content = ({
   lazy = true,
   offestIndex = 1,
   sizes = false,
+  alt= "",
   ...rest
 }) => {
   const isVideo = url.match(/\.(mp4|webm)$/) != null;
@@ -37,6 +38,7 @@ export const Content = ({
       width="100%"
       height="100%"
       {...props}
+      alt={alt}
     >
       {urlMobile && <source src={urlMobile} media="(max-aspect-ratio: 2/3)" />}
       <source src={url} />
@@ -45,12 +47,12 @@ export const Content = ({
 
   const ImageContent = (props) =>
     urlMobile ? (
-      <motion.picture {...props}>
+      <motion.picture {...props} alt={alt}>
         <source srcSet={urlMobile} media="(max-aspect-ratio: 2/3)" />
         <img src={url} width="100%" height="100%" />
       </motion.picture>
     ) : (
-      <motion.img src={url} width="100%" height="100%" {...props} />
+      <motion.img src={url} alt={alt} width="100%" height="100%" {...props} />
     );
 
   const ContentComp = isVideo ? (

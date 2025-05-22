@@ -1,7 +1,7 @@
-  @import "./utils/typography";
-  @import "./utils/mixins";
-  @import "./utils/variables";
-  @import "./utils/responsive-data";
+@import "./utils/typography";
+@import "./utils/mixins";
+@import "./utils/variables";
+@import "./utils/responsive-data";
 
 .body {
   background-color: $c-white;
@@ -13,37 +13,27 @@
     background: $red-100;
     mix-blend-mode: difference;
   }
-}
-
-// #region Scrollbar
-
-.html {
-  scrollbar-width: none; /* Firefox 64+ */
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
-  overflow: -moz-scrollbars-none;
-  scroll-behavior: smooth;
 
   &::-webkit-scrollbar {
-    display: none;
+    width: VW(6);
   }
-  
-  &::-moz-scrollbar {
-    display: none; /* Firefox до версії 64 */
-  }
-}
 
-@supports (-ms-overflow-style: none) {
-  .html {
-    -ms-overflow-style: none;
+  &::-webkit-scrollbar-track {
+    background: $g-20;
+    border-radius: 0px;
   }
-}
 
-@supports (-ms-overflow-style: none) {
-  .html {
-    overflow: -ms-autohiding-scrollbar;
+  &::-webkit-scrollbar-thumb {
+    background: $g-70;
+    border-radius: 0px;
+  }
+
+  @supports not selector(::-webkit-scrollbar) {
+    .body {
+      scrollbar-color: $g-70 $g-20;
+    }
   }
 }
-// #endregion Scrollbar
 
 .container {
   padding-right: VW(30);
@@ -89,12 +79,14 @@
   }
 }
 
-.lazyload-wrapper, .content-wrapper {
+.lazyload-wrapper,
+.content-wrapper {
   height: 100%;
   width: 100%;
   position: relative;
 
-  img, video {
+  img,
+  video {
     height: 100%;
     width: 100%;
     position: relative;

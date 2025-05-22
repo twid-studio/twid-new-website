@@ -19,7 +19,7 @@ const twidGrotesk = localFont({
 const arialMT = localFont({
   src: [
     {
-      path: "./fonts/ArialMT.woff2",
+      path: "./fonts/arialmt.ttf",
       weight: "400",
       style: "normal",
     },
