@@ -20,6 +20,9 @@ export default function Header({ allData }) {
 
   const path = usePathname();
 
+  console.log("render header");
+  
+
   const getLanguagePath = () => {
     // Determine target language (opposite of current)
     const targetLang = lang === "ua" ? "en" : "ua";

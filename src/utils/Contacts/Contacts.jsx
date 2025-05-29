@@ -16,6 +16,7 @@ export default function Contacts({ allData }) {
 
   const [isSectionVisible, setIsSectionVisible] = useState(false);
   const sectionRef = useRef(null);
+  console.log("render contacts");
 
   // Use Intersection Observer instead of Framer Motion's scroll tracking
   useEffect(() => {

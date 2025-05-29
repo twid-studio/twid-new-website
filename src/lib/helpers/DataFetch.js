@@ -1,21 +1,11 @@
 import axios from 'axios';
+import useSWR from 'swr';
+import React from 'react';
 
-// Create a cache for responses
-const responseCache = new Map();
-
+// Keep the base function for non-React contexts
 export async function getFetchData(apiUrl, options = {}) {
-  const { timeout = 30000, useCache = true, cacheTime = 60000 } = options;
+  const { timeout = 30000 } = options;
   
-  // Check cache first if enabled
-  if (useCache && responseCache.has(apiUrl)) {
-    const cachedData = responseCache.get(apiUrl);
-    if (Date.now() - cachedData.timestamp < cacheTime) {
-      return cachedData.data;
-    }
-    // Cache expired, remove it
-    responseCache.delete(apiUrl);
-  }
-
   // Create a cancel token for this request
   const source = axios.CancelToken.source();
   
@@ -25,14 +15,6 @@ export async function getFetchData(apiUrl, options = {}) {
       cancelToken: source.token,
       ...options
     });
-    
-    // Cache the successful response if caching is enabled
-    if (useCache) {
-      responseCache.set(apiUrl, {
-        data: response.data,
-        timestamp: Date.now()
-      });
-    }
     
     return response.data;
   } catch (error) {
@@ -49,13 +31,63 @@ export async function getFetchData(apiUrl, options = {}) {
   }
 }
 
-// Helper hook for React components
-export function useFetchWithCleanup(url, options = {}) {
+// SWR fetcher function
+const fetcher = async (url, options = {}) => {
+  const source = axios.CancelToken.source();
+  const { timeout = 30000, ...restOptions } = options;
+  
+  try {
+    const response = await axios.get(url, {
+      timeout,
+      cancelToken: source.token,
+      ...restOptions
+    });
+    return response.data;
+  } catch (error) {
+    if (axios.isCancel(error)) {
+      console.log(`Request to ${url} was cancelled`);
+      return null;
+    }
+    throw error;
+  }
+};
+
+// React hook using SWR for data fetching
+export function useData(url, options = {}) {
+  const { 
+    swrOptions = {}, 
+    axiosOptions = {},
+    dedupingInterval = 60000, // Default cache time (1 minute)
+    revalidateOnFocus = false,
+    revalidateOnReconnect = true
+  } = options;
+  
+  const { data, error, isLoading, isValidating, mutate } = useSWR(
+    url ? url : null, 
+    url => fetcher(url, axiosOptions),
+    { 
+      dedupingInterval,
+      revalidateOnFocus,
+      revalidateOnReconnect,
+      ...swrOptions 
+    }
+  );
+
+  return {
+    data,
+    isLoading,
+    isValidating, 
+    error,
+    mutate,
+    isError: !!error
+  };
+}
+
+// For manual data fetching with cleanup
+export function useManualFetch() {
   const sourceRef = React.useRef(null);
   
   React.useEffect(() => {
-    sourceRef.current = axios.CancelToken.source();
-    
     return () => {
       // Cancel pending requests when component unmounts
       if (sourceRef.current) {
@@ -64,21 +96,18 @@ export function useFetchWithCleanup(url, options = {}) {
     };
   }, []);
   
-  const fetchData = React.useCallback(async () => {
-    if (!sourceRef.current) {
-      sourceRef.current = axios.CancelToken.source();
+  const fetchData = React.useCallback(async (url, options = {}) => {
+    if (sourceRef.current) {
+      sourceRef.current.cancel('New request initiated');
     }
+    
+    sourceRef.current = axios.CancelToken.source();
     
     return getFetchData(url, {
       ...options,
       cancelToken: sourceRef.current.token
     });
-  }, [url, options]);
+  }, []);
   
   return fetchData;
-}
-
-// Clear the entire cache (useful for logout, etc.)
-export function clearResponseCache() {
-  responseCache.clear();
 }
